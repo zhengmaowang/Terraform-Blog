@@ -1,7 +1,5 @@
 provider "aws" {
   region     = "ap-southeast-2"
-  
-  
 }
 
 #Create a new EC2 launch configuration
@@ -40,5 +38,16 @@ resource "aws_instance" "ec2_private" {
     "Name" = "EC2-PRIVATE"
   }
  
+}
+
+terraform {
+  backend "s3" {
+    bucket = "terraform-aws-state-sandbox"
+    key = "poc/services/webserver-cluster/terraform.tfstate"
+    region = "ap-southeast-2"
+    
+    dynamodb_table = "terraform-aws-locks"
+    encrypt = true
+  }
 }
 ################################
