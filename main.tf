@@ -2,6 +2,7 @@ provider "aws" {
   region     = "ap-southeast-2"
 }
 
+
 #Create a new EC2 launch configuration
 resource "aws_instance" "ec2_public" {
   ami                         = var.ami_id
