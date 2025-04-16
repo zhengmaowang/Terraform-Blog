@@ -5,6 +5,7 @@ provider "aws" {
 
 #Create a new EC2 launch configuration
 resource "aws_instance" "ec2_public" {
+  count = 2
   ami                         = var.ami_id
   instance_type               = var.instance_type
   key_name                    = var.key_name
